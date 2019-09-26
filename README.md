@@ -4,7 +4,7 @@
 
 ## Installation
 
-Reach out to GitHub and [generate an API token](https://github.com/settings/tokens) flagging all read access permissions. Paste it in the `.env` file, following the example of `.env.example`.
+Reach out to GitHub and [generate an API token](https://github.com/settings/tokens) flagging all read access permissions. Paste it in a `.env` file, following the example of `.env.example`.
 
 Then:
 
