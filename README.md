@@ -1,4 +1,6 @@
-# Karten: let's map it up!
+# Karten: let's map it up!
+
+![](docs/images/n-RFId0_7kep4-unsplash.jpg)
 
 ## Installation
 
@@ -31,3 +33,7 @@ Kartenn is based on:
 - [Next](https://github.com/zeit/next.js), because—you know—you gonna need a framework
 - [Apollo GraphQL](https://www.apollographql.com/) for talking to [GitHub API](https://developer.github.com/v4/)
 - [Prettier](https://prettier.io/) for fancy, shiny code
+
+## Else
+
+Photo by [N.](https://unsplash.com/@ellladee?utm_medium=referral&utm_campaign=photographer-credit&utm_content=creditBadge) on Unsplash
