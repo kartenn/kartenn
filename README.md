@@ -1,4 +1,4 @@
-# Karten: let's map it up!
+# Kartenn: let's map it up!
 
 ![](docs/images/n-RFId0_7kep4-unsplash.jpg)
 
