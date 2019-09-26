@@ -1,0 +1,21 @@
+// See https://thefork.frontify.com/d/i5PsehYngfv1/foundations#/brand-compliance/color-palette
+$body-background-color: rgb(247, 247, 247);
+$family-primary: "Raleway", "Mier B", -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol";
+
+@import "../node_modules/bulma/bulma.sass";
+
+.card {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.graph {
+  @extend .card;
+}
+
+h1 + h2.subtitle {
+  font-weight: lighter;
+  text-transform: uppercase;
+}
