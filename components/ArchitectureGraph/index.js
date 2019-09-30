@@ -8,55 +8,42 @@ import withNodesAndLinks from "./withNodesAndLinks"
 import BoundedGraph from "../BoundedGraph"
 
 class ArchitectureGraph extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            nodes: [],
-            links: []
-        }
-    }
-
-    componentDidMount() {
-        this.setState({
-            nodes: this.props.nodes,
-            links: this.props.links
-        });
-    }
-
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        return nextProps.searchTerm !== this.props.searchTerm || nextProps.nodes.length !== this.props.nodes.length;
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    getLinksAndNodes = () => {
         const links = this
            .props
            .links
            .filter(l =>
-              l.source.indexOf(this.props.searchTerm) !== -1 ||
-              l.target.indexOf(this.props.searchTerm) !== -1
+              (typeof l.source === 'string' && l.source.indexOf(this.props.searchTerm) !== -1) ||
+              (typeof l.source === 'object' && l.source.name.indexOf(this.props.searchTerm) !== -1) ||
+              (typeof l.target === 'string' && l.target.indexOf(this.props.searchTerm) !== -1) ||
+              (typeof l.target === 'object' && l.target.name.indexOf(this.props.searchTerm) !== -1)
            );
+
+        console.log(links);
 
         const nodes = this
            .props
            .nodes
-           .filter( n =>
+           .filter(n =>
               n.name.indexOf(this.props.searchTerm) !== -1 ||
-              typeof links.find(l => l.source === n.id || l.target === n.id) !== 'undefined'
+              typeof links.find(l =>
+                 typeof l.source === 'string' && l.source === n.id ||
+                 typeof l.source === 'object' && l.source.id === n.id ||
+                 typeof l.target === 'string' && l.target === n.id ||
+                 typeof l.target === 'object' && l.target.id === n.id
+              ) !== 'undefined'
            );
 
-        this.setState({
-            links,
-            nodes
-        });
-    }
+        console.log(nodes);
+
+        return { links, nodes };
+    };
 
     render() {
         return (
            <BoundedGraph
               style={{width: "100%", height: "150vh"}}
-              nodes={this.state.nodes}
-              links={this.state.links}
+              {...(this.getLinksAndNodes ? this.getLinksAndNodes() : {nodes: [], links: []})}
            />
         )
     }
