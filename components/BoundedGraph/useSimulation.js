@@ -59,8 +59,8 @@ const useSimulation = (
   const [uniqueLinks, setUniqueLinks] = useState([])
 
   useEffect(() => {
-    const simulationNodes = uniqBy([...uniqueNodes, ...nodes], "id")
-    const simulationLinks = uniqBy([...uniqueLinks, ...links], "id")
+    const simulationNodes = uniqBy([...nodes], "id")
+    const simulationLinks = uniqBy([...links], "id")
 
     const repositoryRadiusScale = scalePow()
       .exponent(0.5)
