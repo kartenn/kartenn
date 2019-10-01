@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ArchitectureGraph from "../../components/ArchitectureGraph";
 
-class Kartenn extends Component {
+class Inno extends Component {
     constructor(props) {
         super(props);
 
@@ -33,4 +33,4 @@ class Kartenn extends Component {
 
 }
 
-export default Kartenn;
+export default Inno;
