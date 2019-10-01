@@ -24,6 +24,7 @@ class DebouncedInput extends Component {
 
     render() {
         return <Input
+            isSize='small'
             placeholder={this.props.placeholder}
             onChange={this.handleChange}
         />

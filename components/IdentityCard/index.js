@@ -1,6 +1,10 @@
-import {Panel, PanelHeading, PanelTabs, PanelTab, PanelBlock, PanelIcon, Icon, Control} from 'bloomer';
+import {Panel, PanelHeading, PanelTabs, PanelTab, PanelBlock, PanelIcon, Icon, Control, Tag} from 'bloomer';
 import DebouncedInput from "../DebouncedInput";
 import {Fragment} from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faGitlab } from '@fortawesome/free-brands-svg-icons';
+
 
 class IdentityCard extends React.Component {
 
@@ -9,18 +13,22 @@ class IdentityCard extends React.Component {
     };
 
     renderIdentity = () => {
+        console.log(this.props.selectedNode);
+
         const selectedNode = this.props.selectedNode;
         if (selectedNode) {
             return (
                 <Fragment>
-                    <PanelBlock isActive>
-                        <PanelIcon className="fa fa-github" />
-                        {selectedNode.name}
+                    <PanelBlock>
+                        <FontAwesomeIcon icon={faGithub} size='xs' style={{margin: '3%'}}/>
+                        <a href={selectedNode.url} target='_blank'>{selectedNode.name}</a>
                     </PanelBlock>
-                    <PanelTabs>
-                        <PanelTab isActive>methods</PanelTab>
-                        <PanelTab>events</PanelTab>
-                    </PanelTabs>
+                    <PanelBlock>Information</PanelBlock>
+                    <PanelBlock>
+                        <Tag isColor='black' style={{margin : '2%'}}>{selectedNode.layer}</Tag>
+                    </PanelBlock>
+                    <PanelBlock>methods</PanelBlock>
+                    <PanelBlock>events</PanelBlock>
                 </Fragment>
             )
         }
@@ -38,7 +46,7 @@ class IdentityCard extends React.Component {
                             delay={1000}
                         />
                         <Icon isSize='small' isAlign='left'>
-                            <span className='fa fa-search' aria-hidden='true'/>
+                            <FontAwesomeIcon icon={faSearch} size='xs' style={{margin: '0.5%'}}/>
                         </Icon>
                     </Control>
                 </PanelBlock>
