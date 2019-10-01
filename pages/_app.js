@@ -10,6 +10,8 @@ const reducer = (state = {searchTerm: ''}, action) => {
     switch (action.type) {
         case 'SEARCH':
             return {...state, searchTerm: action.payload};
+        case 'SELECT_NODE':
+            return {...state, selectedNode: action.payload};
         default:
             return state
     }

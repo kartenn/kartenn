@@ -6,23 +6,28 @@ class Kartenn extends Component {
         super(props);
 
         this.state = {
-            searchTerm: ''
+            searchTerm: '',
+            selectedNode: null
         }
     }
 
     componentDidMount() {
-        this.props.store.subscribe(this.handleSearchTermChanged);
+        this.props.store.subscribe(this.handleStoreChanged);
     }
 
-    handleSearchTermChanged = () => {
+    handleStoreChanged = () => {
         this.setState({
-            searchTerm: this.props.store.getState().searchTerm
+            searchTerm: this.props.store.getState().searchTerm,
+            selectedNode: this.props.store.getState().selectedNode
         });
     };
 
     render() {
         return (
-           <ArchitectureGraph searchTerm={this.state.searchTerm} />
+           <ArchitectureGraph
+              {...this.state}
+              store={this.props.store}
+           />
         );
     }
 

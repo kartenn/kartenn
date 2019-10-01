@@ -25,6 +25,7 @@ class ArchitectureGraph extends Component {
         return (
            <BoundedGraph
               style={{width: "100%", height: "150vh"}}
+              store={this.props.store}
               {...(this.getLinksAndNodes ? this.getLinksAndNodes() : {nodes: [], links: []})}
            />
         )
