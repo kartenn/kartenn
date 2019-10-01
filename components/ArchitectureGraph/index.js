@@ -6,31 +6,17 @@ import withRepositoriesAutoPaging from "./withRepositoriesAutoPaging"
 import withNodesAndLinks from "./withNodesAndLinks"
 
 import BoundedGraph from "../BoundedGraph"
+import linkMatchesSearchTerm from "../../helpers/linkMatchesSearchTerm";
+import nodeIsDependencyToSearchTerm from "../../helpers/nodeIsDependencyToSearchTerm";
+import nodeMatchesSearchTerm from "../../helpers/nodeMatchesSearchTerm";
 
 class ArchitectureGraph extends Component {
     getLinksAndNodes = () => {
-        const links = this
-           .props
-           .links
-           .filter(l =>
-              (typeof l.source === 'string' && l.source.indexOf(this.props.searchTerm) !== -1) ||
-              (typeof l.source === 'object' && l.source.name.indexOf(this.props.searchTerm) !== -1) ||
-              (typeof l.target === 'string' && l.target.indexOf(this.props.searchTerm) !== -1) ||
-              (typeof l.target === 'object' && l.target.name.indexOf(this.props.searchTerm) !== -1)
-           );
-
+        const links = this.props.links.filter(l => linkMatchesSearchTerm(l, this.props.searchTerm));
         const nodes = this
            .props
            .nodes
-           .filter(n =>
-              n.name.indexOf(this.props.searchTerm) !== -1 ||
-              typeof links.find(l =>
-                 typeof l.source === 'string' && l.source === n.id ||
-                 typeof l.source === 'object' && l.source.id === n.id ||
-                 typeof l.target === 'string' && l.target === n.id ||
-                 typeof l.target === 'object' && l.target.id === n.id
-              ) !== 'undefined'
-           );
+           .filter(n => nodeMatchesSearchTerm(n, this.props.searchTerm) || nodeIsDependencyToSearchTerm(n, links));
 
         return { links, nodes };
     };
