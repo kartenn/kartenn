@@ -9,7 +9,6 @@ import {
     Button,
     Control,
     Field,
-    Input,
     LevelItem,
     LevelLeft,
     LevelRight,
@@ -23,11 +22,11 @@ import {
     Content,
     Section,
 } from "bloomer"
-import {ApolloProvider} from "react-apollo";
+import DebouncedInput from "../DebouncedInput";
 
 class LightLayout extends React.Component {
-    handleSearch = (e) => {
-        this.props.store.dispatch({type: 'SEARCH', payload: e.target.value});
+    handleSearch = (value) => {
+        this.props.store.dispatch({type: 'SEARCH', payload: value});
     };
 
     render() {
@@ -35,6 +34,9 @@ class LightLayout extends React.Component {
            <Fragment>
                <Head>
                    <title>Kartenn</title>
+                   <meta httpEquiv="cache-control" content="no-cache" />
+                   <meta httpEquiv="expires" content="0" />
+                   <meta httpEquiv="pragma" content="no-cache" />
                </Head>
 
                <Navbar>
@@ -54,9 +56,10 @@ class LightLayout extends React.Component {
                                <NavbarStart>
                                    <Field hasAddons>
                                        <Control>
-                                           <Input
+                                           <DebouncedInput
                                               placeholder='Find a micro-service'
                                               onChange={this.handleSearch}
+                                              delay={1000}
                                            />
                                        </Control>
                                        <Control>

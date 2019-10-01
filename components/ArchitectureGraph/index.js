@@ -19,8 +19,6 @@ class ArchitectureGraph extends Component {
               (typeof l.target === 'object' && l.target.name.indexOf(this.props.searchTerm) !== -1)
            );
 
-        console.log(links);
-
         const nodes = this
            .props
            .nodes
@@ -33,8 +31,6 @@ class ArchitectureGraph extends Component {
                  typeof l.target === 'object' && l.target.id === n.id
               ) !== 'undefined'
            );
-
-        console.log(nodes);
 
         return { links, nodes };
     };

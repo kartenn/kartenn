@@ -1,6 +1,5 @@
 import React from "react";
 import {createStore} from "redux";
-import {Provider} from "react-redux";
 import App from "next/app";
 import withRedux from "next-redux-wrapper";
 import LightLayout from "../components/Layout/LightLayout";
@@ -40,13 +39,11 @@ class Kartenn extends App {
         const {Component, pageProps, store} = this.props;
 
         return (
-           <Provider store={store}>
-               <ApolloProvider client={client}>
-                   <LightLayout store={store}>
-                       <Component {...pageProps} store={store} />
-                   </LightLayout>
-               </ApolloProvider>
-           </Provider>
+           <ApolloProvider client={client}>
+               <LightLayout store={store}>
+                   <Component {...pageProps} store={store} />
+               </LightLayout>
+           </ApolloProvider>
         );
     }
 }

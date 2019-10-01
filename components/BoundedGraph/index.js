@@ -16,7 +16,7 @@ const BoundedGraph = props => {
     { nodesGroupElement, linksGroupElement, containerGroupElement },
     { nodes, links },
     { width, height }
-  )
+  );
 
   return (
     <div className="graph">
