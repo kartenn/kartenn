@@ -95,7 +95,7 @@ const toNodesAndLinks = (data = {}) => {
 
       const dependenciesFromConfigFiles = flatten(
         map(
-          compact([configDefault, installerLocal, installerDefault]),
+          compact([repo.configDefault, repo.installerLocal, repo.installerDefault]),
           "text"
         ).map(parseDependenciesFromConfigFile)
       );
