@@ -60,15 +60,15 @@ const toNodesAndLinks = (data = {}) => {
         ...repo
       };
 
-      if (markdownReadme) {
-        const { text: markdownReadmeText } = markdownReadme
+      if (repo.markdownReadme) {
+        const { text: markdownReadmeText } = repo.markdownReadme
 
         const functionalDependencies = parseFunctionalDependencies(
           markdownReadmeText
-        )
+        );
 
         functionalDependencies.forEach(node => {
-          const { summary: dependencyRepositoryName, content } = node
+          const { summary: dependencyRepositoryName, content } = node;
 
           nodes[`${REPOSITORY_NODE_KIND}-${dependencyRepositoryName}`] = {
             // Fallback to 0 if the node is added as a dependency
@@ -77,16 +77,16 @@ const toNodesAndLinks = (data = {}) => {
             id: `${REPOSITORY_NODE_KIND}-${dependencyRepositoryName}`,
             kind: REPOSITORY_NODE_KIND,
             name: dependencyRepositoryName,
-            url,
+            url: repo.url,
             layer: repositoryLayer({
               name: dependencyRepositoryName,
-              repositoryTopics,
+              repositoryTopics: repo.repositoryTopics,
             }),
-          }
+          };
 
           links.push({
-            id: `${REPOSITORY_NODE_KIND}-${dependencyRepositoryName}-${REPOSITORY_NODE_KIND}-${repositoryName}`,
-            source: `${REPOSITORY_NODE_KIND}-${repositoryName}`,
+            id: `${REPOSITORY_NODE_KIND}-${dependencyRepositoryName}-${REPOSITORY_NODE_KIND}-${repo.name}`,
+            source: `${REPOSITORY_NODE_KIND}-${repo.name}`,
             target: `${REPOSITORY_NODE_KIND}-${dependencyRepositoryName}`,
             from: "readme",
           })
@@ -98,7 +98,7 @@ const toNodesAndLinks = (data = {}) => {
           compact([configDefault, installerLocal, installerDefault]),
           "text"
         ).map(parseDependenciesFromConfigFile)
-      )
+      );
 
       dependenciesFromConfigFiles.forEach(name => {
         nodes[`${REPOSITORY_NODE_KIND}-${name}`] = {
@@ -108,15 +108,15 @@ const toNodesAndLinks = (data = {}) => {
           id: `${REPOSITORY_NODE_KIND}-${name}`,
           kind: REPOSITORY_NODE_KIND,
           name: name,
-          url,
+          url: repo.url,
           layer: repositoryLayer({
             name: name,
           }),
         }
 
         links.push({
-          id: `${REPOSITORY_NODE_KIND}-${name}-${REPOSITORY_NODE_KIND}-${repositoryName}`,
-          source: `${REPOSITORY_NODE_KIND}-${repositoryName}`,
+          id: `${REPOSITORY_NODE_KIND}-${name}-${REPOSITORY_NODE_KIND}-${repo.name}`,
+          source: `${REPOSITORY_NODE_KIND}-${repo.name}`,
           target: `${REPOSITORY_NODE_KIND}-${name}`,
           from: "config",
         })
