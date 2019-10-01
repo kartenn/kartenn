@@ -45,7 +45,12 @@ const layerRank = layer => {
 };
 
 const nodeSelected = (node, store) => {
-    store.dispatch({type: 'SELECT_NODE', payload: node});
+    const selectedNode = store.getState()['selectedNode'];
+
+    store.dispatch({
+        type: 'SELECT_NODE',
+        payload: selectedNode !== null && node.name === selectedNode.name ? null : node
+    });
 };
 
 // See https://bl.ocks.org/mbostock/1062288 for collapsing

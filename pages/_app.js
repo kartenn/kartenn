@@ -6,7 +6,7 @@ import LightLayout from "../components/Layout/LightLayout";
 import {ApolloProvider} from "react-apollo";
 import client from "../lib/client";
 
-const reducer = (state = {searchTerm: ''}, action) => {
+const reducer = (state = {searchTerm: '', selectedNode: null}, action) => {
     switch (action.type) {
         case 'SEARCH':
             return {...state, searchTerm: action.payload};

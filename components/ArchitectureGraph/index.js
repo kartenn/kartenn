@@ -12,11 +12,20 @@ import nodeMatchesSearchTerm from "../../helpers/nodeMatchesSearchTerm";
 
 class ArchitectureGraph extends Component {
     getLinksAndNodes = () => {
-        const links = this.props.links.filter(l => linkMatchesSearchTerm(l, this.props.searchTerm));
+        if (this.props.selectedNode === null) {
+            const links = this.props.links.filter(l => linkMatchesSearchTerm(l, this.props.searchTerm));
+
+            return {
+                links: [],
+                nodes: this.props.nodes.filter(n => nodeMatchesSearchTerm(n, this.props.searchTerm))
+            };
+        }
+
+        const links = this.props.links.filter(l => linkMatchesSearchTerm(l, this.props.selectedNode.name));
         const nodes = this
            .props
            .nodes
-           .filter(n => nodeMatchesSearchTerm(n, this.props.searchTerm) || nodeIsDependencyToSearchTerm(n, links));
+           .filter(n => n.name === this.props.selectedNode.name || nodeIsDependencyToSearchTerm(n, links));
 
         return { links, nodes };
     };
