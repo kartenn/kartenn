@@ -17,6 +17,8 @@ import {
   USER_NODE_KIND,
 } from "../Graph/useSimulation"
 
+import {SERVICE_LAYER, WORKER_LAYER, API_LAYER, GATEWAY_LAYER} from '../../constants/layers';
+
 import parseFunctionalDependencies from "../../lib/parseFunctionalDependencies"
 import parseDependenciesFromConfigFile from "./parseDependenciesFromConfigFile"
 
@@ -28,11 +30,6 @@ const nextGenRepositories = ({ name }) => {
     RegExp("-worker$").test(name)
   )
 }
-
-export const SERVICE_LAYER = "service"
-export const GATEWAY_LAYER = "gateway"
-export const API_LAYER = "api"
-export const WORKER_LAYER = "worker"
 
 const repositoryLayer = ({ name }) => {
   if (RegExp("-api$").test(name)) return API_LAYER

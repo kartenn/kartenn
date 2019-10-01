@@ -33,7 +33,7 @@ import {
     GATEWAY_LAYER,
     API_LAYER,
     WORKER_LAYER,
-} from "../ArchitectureGraph/withNodesAndLinks"
+} from "../../constants/layers"
 
 const FORCE_STRENGHT = 0.03
 
@@ -99,25 +99,25 @@ const useSimulation = (
             return Math.abs(
                scale(layerRank(sourceLayer)) - scale(layerRank(targetLayer))
             )
-        }
+        };
 
         const linkForce = forceLink([])
            .id(d => d.id)
            .distance(distance)
-           .strength(FORCE_STRENGHT * 3)
+           .strength(FORCE_STRENGHT * 3);
 
         const xForce = forceX()
            .strength(3 * FORCE_STRENGHT)
-           .x(({layer}) => scale(layerRank(layer)))
+           .x(({layer}) => scale(layerRank(layer)));
 
         const yForce = forceY()
            .strength(FORCE_STRENGHT / 1.5)
-           .y(0)
+           .y(0);
 
         const manyBodyForce = forceManyBody().strength(
            ({size}) =>
               -Math.pow(repositoryRadiusScale(size), 1.8) * FORCE_STRENGHT * 40
-        )
+        );
 
         simulation
            .force("x", xForce)
@@ -137,7 +137,7 @@ const useSimulation = (
                  .append("path")
                  .attr("class", ({from}) => `arc from-${from}`)
                  .attr("marker-mid", "url(#marker)")
-           )
+           );
 
         // See https://observablehq.com/@d3/selection-join for enter on join
         const node = select(nodesGroupElement.current)
@@ -155,7 +155,7 @@ const useSimulation = (
                  )
                  .call(drawRepositoryNode, {
                      scale: repositoryRadiusScale,
-                     showLabel: true,
+                     showLabel: true
                  })
            )
            .on("mouseover", fade(0.1))
@@ -165,23 +165,23 @@ const useSimulation = (
         setUniqueLinks([]);
         setUniqueNodes([]);
 
-        setUniqueNodes(simulationNodes)
-        setUniqueLinks(simulationLinks)
+        setUniqueNodes(simulationNodes);
+        setUniqueLinks(simulationLinks);
 
-        simulation.alphaTarget(0.2).restart()
+        simulation.alphaTarget(0.2).restart();
 
         const clamp = scaleLinear()
            .domain([-600 + NODE_SIZE, 600 - NODE_SIZE])
            .range([-600 + NODE_SIZE, 600 - NODE_SIZE])
-           .clamp(true)
+           .clamp(true);
 
         // See https://bl.ocks.org/mbostock/1129492
         const transform = d => {
-            d.x = clamp(d.x)
-            d.y = clamp(d.y)
+            d.x = clamp(d.x);
+            d.y = clamp(d.y);
 
             return `translate(${d.x}, ${d.y})`
-        }
+        };
 
         const arc = d => {
             var dx = d.target.x - d.source.x,
@@ -202,7 +202,7 @@ const useSimulation = (
                "," +
                d.target.y
             )
-        }
+        };
 
         // See https://bl.ocks.org/bjtucker/151f6344ffd02105a67a
         // and http://moritzstefaner.github.io/gridexperiments/
@@ -214,7 +214,7 @@ const useSimulation = (
 
         // See: https://bl.ocks.org/vasturiano/e70e14483fe01eb0a3ea7d1d46a30571
         function getPolygonPath(r, nSides, startAngle = Math.PI / 2) {
-            let d = ""
+            let d = "";
 
             range(nSides)
                .map(side => {
