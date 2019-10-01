@@ -59,8 +59,11 @@ const useSimulation = (
   const [uniqueLinks, setUniqueLinks] = useState([])
 
   useEffect(() => {
-    const simulationNodes = uniqBy([...nodes], "id")
-    const simulationLinks = uniqBy([...links], "id")
+    select(nodesGroupElement.current).selectAll(".node").remove();
+    select(linksGroupElement.current).selectAll(".link").remove();
+
+    const simulationNodes = uniqBy([...nodes], "id");
+    const simulationLinks = uniqBy([...links], "id");
 
     const repositoryRadiusScale = scalePow()
       .exponent(0.5)
@@ -147,6 +150,9 @@ const useSimulation = (
       )
       .on("mouseover", fade(0.1))
       .on("mouseout", fade(1))
+
+    setUniqueLinks([]);
+    setUniqueNodes([]);
 
     setUniqueNodes(simulationNodes)
     setUniqueLinks(simulationLinks)
