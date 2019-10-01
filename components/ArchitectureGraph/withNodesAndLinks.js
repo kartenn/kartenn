@@ -48,25 +48,17 @@ const toNodesAndLinks = (data = {}) => {
   let links = []
 
   repositories.forEach(
-    ({
-      name: repositoryName,
-      url,
-      markdownReadme,
-      repositoryTopics,
-      diskUsage,
-      configDefault,
-      installerLocal,
-      installerDefault,
-    }) => {
-      nodes[`${REPOSITORY_NODE_KIND}-${repositoryName}`] = {
-        ...nodes[`${REPOSITORY_NODE_KIND}-${repositoryName}`],
-        id: `${REPOSITORY_NODE_KIND}-${repositoryName}`,
+    (repo) => {
+      nodes[`${REPOSITORY_NODE_KIND}-${repo.name}`] = {
+        ...nodes[`${REPOSITORY_NODE_KIND}-${repo.name}`],
+        id: `${REPOSITORY_NODE_KIND}-${repo.name}`,
         kind: REPOSITORY_NODE_KIND,
-        name: repositoryName,
-        url,
-        layer: repositoryLayer({ name: repositoryName, repositoryTopics }),
-        size: diskUsage,
-      }
+        name: repo.name,
+        url: repo.url,
+        layer: repositoryLayer({ name: repo.name, repositoryTopics: repo.repositoryTopics }),
+        size: repo.diskUsage,
+        ...repo
+      };
 
       if (markdownReadme) {
         const { text: markdownReadmeText } = markdownReadme
