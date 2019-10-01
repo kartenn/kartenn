@@ -6,29 +6,19 @@ import ActiveAwareNavbarItem from "../ActiveAwareNavbarItem"
 
 import { Fragment } from "react"
 import {
-    Button,
-    Control,
-    Field,
     LevelItem,
     LevelLeft,
-    LevelRight,
     Navbar,
     NavbarBrand,
     NavbarBurger,
-    NavbarMenu,
-    NavbarStart,
     Footer,
     Container,
     Content,
     Section,
 } from "bloomer"
-import DebouncedInput from "../DebouncedInput";
+
 
 class LightLayout extends React.Component {
-    handleSearch = (value) => {
-        this.props.store.dispatch({type: 'SEARCH', payload: value});
-    };
-
     render() {
         return (
            <Fragment>
@@ -50,26 +40,6 @@ class LightLayout extends React.Component {
                            </NavbarBrand>
                        </LevelItem>
                    </LevelLeft>
-                   <LevelRight style={{flex: 1}}>
-                       <LevelItem>
-                           <NavbarMenu>
-                               <NavbarStart>
-                                   <Field hasAddons>
-                                       <Control>
-                                           <DebouncedInput
-                                              placeholder='Find a micro-service'
-                                              onChange={this.handleSearch}
-                                              delay={1000}
-                                           />
-                                       </Control>
-                                       <Control>
-                                           <Button>Search</Button>
-                                       </Control>
-                                   </Field>
-                               </NavbarStart>
-                           </NavbarMenu>
-                       </LevelItem>
-                   </LevelRight>
                </Navbar>
                <Section>
                    <Container isFluid>

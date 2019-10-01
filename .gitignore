@@ -82,7 +82,7 @@ typings/
 # nuxt.js build output
 .nuxt
 
-# react / gatsby 
+# react / gatsby
 public/
 
 # vuepress build output
@@ -110,5 +110,7 @@ bower_componets
 psd
 thumb
 sketch
+
+.idea
 
 # End of https://www.gitignore.io/api/node,react,dotenv
