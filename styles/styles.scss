@@ -19,3 +19,9 @@ h1 + h2.subtitle {
   font-weight: lighter;
   text-transform: uppercase;
 }
+
+.node {
+  &:hover {
+    cursor: pointer;
+  }
+}

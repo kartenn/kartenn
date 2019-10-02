@@ -13,8 +13,6 @@ class IdentityCard extends React.Component {
     };
 
     renderIdentity = () => {
-        console.log(this.props.selectedNode);
-
         const selectedNode = this.props.selectedNode;
         if (selectedNode) {
             return (

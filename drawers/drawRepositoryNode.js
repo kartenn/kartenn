@@ -6,11 +6,11 @@ import colors from './colors';
 function drawRepositoryNode(selection, { scale, showLabel = false }) {
   selection
     .append("path")
-    .attr("d", ({ size }) => getPolygonPath(scale(size), 6))
+    .attr("d", ({ diskUsage = 100 }) => getPolygonPath(scale(diskUsage), 6))
     .attr("stroke", "#589442")
     .attr("stroke-opacity", 0.3)
     .attr("stroke-width", 3)
-    .style('fill', (d) => { return colors[d.layer] ? colors[d.layer] : '#589442'; });
+    .style('fill', (d) => { return colors[d.type] ? colors[d.type] : '#589442'; });
 
   if (showLabel) {
     selection
@@ -19,13 +19,13 @@ function drawRepositoryNode(selection, { scale, showLabel = false }) {
       .attr("stroke", "#ffffff")
       .attr("stroke-width", 3)
       .text(({ name }) => name)
-      .attr("y", ({ size = 0 }) => -(5 + scale(size)))
+      .attr("y", ({ diskUsage = 0 }) => -(5 + scale(diskUsage)))
 
     selection
       .append("text")
       .attr("text-anchor", "middle")
       .text(({ name }) => name)
-      .attr("y", ({ size = 0 }) => -(5 + scale(size)))
+      .attr("y", ({ diskUsage = 0 }) => -(5 + scale(diskUsage)))
   }
 }
 

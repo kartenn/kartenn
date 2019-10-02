@@ -3,14 +3,15 @@
 
 const { parsed: localEnv } = require("dotenv").config()
 
-const webpack = require("webpack")
-const withSass = require("@zeit/next-sass")
+const webpack = require("webpack");
+const withSass = require("@zeit/next-sass");
+const withGraphQL = require("next-plugin-graphql");
 
-module.exports = withSass({
+module.exports = withGraphQL(withSass({
   webpack(config) {
     // Loading plugin for using environment variable in JS code.
-    config.plugins.push(new webpack.EnvironmentPlugin(localEnv))
+    config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
 
     return config
   },
-});
+}));

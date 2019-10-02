@@ -1,48 +1,41 @@
-import {compose} from "react-apollo"
-import React, {Component} from 'react';
-
-import withRepositories from "./withRepositories"
-import withRepositoriesAutoPaging from "./withRepositoriesAutoPaging"
-import withNodesAndLinks from "./withNodesAndLinks"
+import React, {useState, useEffect} from 'react';
+import {useQuery} from "@apollo/react-hooks"
 
 import BoundedGraph from "../BoundedGraph"
 import linkMatchesSearchTerm from "../../helpers/linkMatchesSearchTerm";
 import nodeIsDependencyToSearchTerm from "../../helpers/nodeIsDependencyToSearchTerm";
 import nodeMatchesSearchTerm from "../../helpers/nodeMatchesSearchTerm";
+import listProjects from "../../graphql/listProjects.graphql";
+import client from "../../lib/client";
+import projectsToNodesTransformer from "../../transformers/projectsToNodesTransformer";
 
-class ArchitectureGraph extends Component {
-    getLinksAndNodes = () => {
-        if (this.props.selectedNode === null) {
-            const links = this.props.links.filter(l => linkMatchesSearchTerm(l, this.props.searchTerm));
-
-            return {
-                links: [],
-                nodes: this.props.nodes.filter(n => nodeMatchesSearchTerm(n, this.props.searchTerm))
-            };
-        }
-
-        const links = this.props.links.filter(l => linkMatchesSearchTerm(l, this.props.selectedNode.name));
-        const nodes = this
-           .props
-           .nodes
-           .filter(n => n.name === this.props.selectedNode.name || nodeIsDependencyToSearchTerm(n, links));
-
-        return { links, nodes };
-    };
-
-    render() {
-        return (
-           <BoundedGraph
-              style={{width: "100%", height: "150vh"}}
-              store={this.props.store}
-              {...(this.getLinksAndNodes ? this.getLinksAndNodes() : {nodes: [], links: []})}
-           />
-        )
+function getLinksAndNodes(allNodes, allLinks, searchTerm, selectedNode) {
+    if (selectedNode === null) {
+        return {
+            links: [],
+            nodes: allNodes.filter(n => nodeMatchesSearchTerm(n, searchTerm))
+        };
     }
+
+    const links = allLinks.filter(l => linkMatchesSearchTerm(l, selectedNode.name));
+    const nodes = allNodes.filter(n => n.name === selectedNode.name || nodeIsDependencyToSearchTerm(n, links));
+
+    return { links, nodes };
 }
 
-export default compose(
-   withRepositories,
-   withRepositoriesAutoPaging,
-   withNodesAndLinks
-)(ArchitectureGraph)
+function ArchitectureGraph(props) {
+    const {data} = useQuery(listProjects, { client });
+    const nodes = data ? projectsToNodesTransformer(data.listProjects) : [];
+    const linksAndNodes = getLinksAndNodes(nodes, [], props.searchTerm, props.selectedNode);
+
+    return (
+        <BoundedGraph
+           style={{width: "100%", height: "150vh"}}
+           store={props.store}
+           nodes={linksAndNodes.nodes}
+           links={[]}
+        />
+    );
+}
+
+export default ArchitectureGraph;

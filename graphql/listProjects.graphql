@@ -1,0 +1,7 @@
+query list {
+    listProjects {
+        projectUuid
+        name
+        type
+    }
+}
