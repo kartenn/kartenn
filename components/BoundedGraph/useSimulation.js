@@ -29,19 +29,19 @@ export const TEAM_NODE_KIND = "team"
 export const LANGUAGE_NODE_KIND = "language"
 
 import {
-    SERVICE_LAYER,
-    GATEWAY_LAYER,
-    API_LAYER,
-    WORKER_LAYER,
-} from "../../constants/layers"
+    SERVICE_TYPE,
+    GATEWAY_TYPE,
+    API_TYPE,
+    WORKER_TYPE,
+} from "../../constants/types"
 
 const FORCE_STRENGHT = 0.03
 
-const layerRank = layer => {
-    if (layer === WORKER_LAYER) return 0
-    if (layer === SERVICE_LAYER) return 1
-    if (layer === GATEWAY_LAYER) return 2
-    if (layer === API_LAYER) return 3
+const typeRank = type => {
+    if (type === WORKER_TYPE) return 0
+    if (type === SERVICE_TYPE) return 1
+    if (type === GATEWAY_TYPE) return 2
+    if (type === API_TYPE) return 3
 };
 
 const nodeSelected = (node, store) => {
@@ -81,9 +81,9 @@ const useSimulation = (
            .range([5, 20])
 
         const allRanks = map(
-           [SERVICE_LAYER, GATEWAY_LAYER, API_LAYER, WORKER_LAYER],
-           layerRank
-        ).sort()
+           [SERVICE_TYPE, GATEWAY_TYPE, API_TYPE, WORKER_TYPE],
+           typeRank
+        ).sort();
 
         // See https://bl.ocks.org/d3indepth/4ed842af47f23eeb5cf1755d4bb67073
         const scale = scalePoint()
@@ -92,12 +92,12 @@ const useSimulation = (
 
         const distance = link => {
             const {
-                source: {layer: sourceLayer},
-                target: {layer: targetLayer},
+                source: {type: sourceType},
+                target: {type: targetType},
             } = link
 
             return Math.abs(
-               scale(layerRank(sourceLayer)) - scale(layerRank(targetLayer))
+               scale(typeRank(sourceType)) - scale(typeRank(targetType))
             )
         };
 
@@ -108,7 +108,7 @@ const useSimulation = (
 
         const xForce = forceX()
            .strength(3 * FORCE_STRENGHT)
-           .x(({layer}) => scale(layerRank(layer)));
+           .x(({type}) => scale(typeRank(type)));
 
         const yForce = forceY()
            .strength(FORCE_STRENGHT / 1.5)

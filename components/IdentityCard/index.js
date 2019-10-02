@@ -23,7 +23,7 @@ class IdentityCard extends React.Component {
                     </PanelBlock>
                     <PanelBlock>Information</PanelBlock>
                     <PanelBlock>
-                        <Tag isColor='black' style={{margin : '2%'}}>{selectedNode.layer}</Tag>
+                        <Tag isColor='black' style={{margin : '2%'}}>{selectedNode.type}</Tag>
                     </PanelBlock>
                     <PanelBlock>methods</PanelBlock>
                     <PanelBlock>events</PanelBlock>
@@ -35,7 +35,7 @@ class IdentityCard extends React.Component {
     render() {
         return (
             <Panel>
-                <PanelHeading>Micro Service</PanelHeading>
+                <PanelHeading>Kartenn</PanelHeading>
                 <PanelBlock>
                     <Control hasIcons='left'>
                         <DebouncedInput
