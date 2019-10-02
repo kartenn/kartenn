@@ -1,10 +1,10 @@
-import {Panel, PanelHeading, PanelTabs, PanelTab, PanelBlock, PanelIcon, Icon, Control, Tag} from 'bloomer';
+import {Panel, PanelHeading, PanelBlock, Icon, Control, Tag} from 'bloomer';
 import DebouncedInput from "../DebouncedInput";
 import {Fragment} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faSitemap } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faGitlab } from '@fortawesome/free-brands-svg-icons';
-
+import colors from '../../drawers/colors';
 
 class IdentityCard extends React.Component {
 
@@ -17,13 +17,13 @@ class IdentityCard extends React.Component {
         if (selectedNode) {
             return (
                 <Fragment>
-                    <PanelBlock>
+                    <PanelBlock style={{backgroundColor: colors(selectedNode.type)}}>
                         <FontAwesomeIcon icon={faGithub} size='xs' style={{margin: '3%'}}/>
                         <a href={selectedNode.url} target='_blank'>{selectedNode.name}</a>
                     </PanelBlock>
                     <PanelBlock>Information</PanelBlock>
                     <PanelBlock>
-                        <Tag isColor='black' style={{margin : '2%'}}>{selectedNode.type}</Tag>
+                        <Tag isColor={colors(selectedNode.type)} style={{margin : '2%'}}>{selectedNode.type}</Tag>
                     </PanelBlock>
                     <PanelBlock>methods</PanelBlock>
                     <PanelBlock>events</PanelBlock>
@@ -35,7 +35,10 @@ class IdentityCard extends React.Component {
     render() {
         return (
             <Panel>
-                <PanelHeading>Kartenn</PanelHeading>
+                <PanelHeading>
+                    <FontAwesomeIcon icon={faSitemap} size='sm' style={{margin: '0 3%'}}/>
+                    <span style={{padding: '3%'}}>Kartenn</span>
+                </PanelHeading>
                 <PanelBlock>
                     <Control hasIcons='left'>
                         <DebouncedInput
