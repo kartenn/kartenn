@@ -17,13 +17,13 @@ class IdentityCard extends React.Component {
         if (selectedNode) {
             return (
                 <Fragment>
-                    <PanelBlock style={{backgroundColor: colors(selectedNode.type)}}>
+                    <PanelBlock style={{backgroundColor: colors[selectedNode.type]}}>
                         <FontAwesomeIcon icon={faGithub} size='xs' style={{margin: '3%'}}/>
                         <a href={selectedNode.url} target='_blank'>{selectedNode.name}</a>
                     </PanelBlock>
                     <PanelBlock>Information</PanelBlock>
                     <PanelBlock>
-                        <Tag isColor={colors(selectedNode.type)} style={{margin : '2%'}}>{selectedNode.type}</Tag>
+                        <Tag isColor={colors[selectedNode.type]} style={{margin : '2%'}}>{selectedNode.type}</Tag>
                     </PanelBlock>
                     <PanelBlock>methods</PanelBlock>
                     <PanelBlock>events</PanelBlock>
