@@ -1,0 +1,13 @@
+query get($idRepository: ID) {
+    getProject(idRepository: $idRepository) {
+        projectUuid
+        name
+        urlRepository
+        idRepository
+        codeOwners
+        languages
+        slackRoom
+        devAlias
+        hasReadMe
+    }
+}

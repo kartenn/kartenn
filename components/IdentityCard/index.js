@@ -1,4 +1,4 @@
-import {Button, Field, Panel, PanelHeading, PanelBlock, Icon, Control, Tag} from 'bloomer';
+import {Panel, PanelHeading, PanelBlock, Icon, Control, Tag} from 'bloomer';
 import DebouncedInput from "../DebouncedInput";
 import {Fragment} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -40,20 +40,17 @@ class IdentityCard extends React.Component {
                     <span style={{padding: '3%'}}>Kartenn</span>
                 </PanelHeading>
                 <PanelBlock>
-                    <Field hasAddons style={{width: '100%'}}>
-                        <Control>
-                            <Button>
-                                <FontAwesomeIcon icon={faSearch} size='xs' style={{margin: '0.5%'}}/>
-                            </Button>
-                        </Control>
-                        <Control style={{width: '100%'}}>
-                            <DebouncedInput
-                               placeholder='Find a micro-service'
-                               onChange={this.handleSearch}
-                               delay={1000}
-                            />
-                        </Control>
-                    </Field>
+                    <Control hasIcons='left'>
+                        <DebouncedInput
+                            placeholder='Find a micro-service'
+                            onChange={this.handleSearch}
+                            delay={1000}
+                        />
+                        <span className="icon is-left is-small">
+                            <FontAwesomeIcon icon={faSearch} size='xs' style={{margin: '0.5%'}}/>
+                        </span>
+                    </Control>
+
                 </PanelBlock>
                 {this.renderIdentity()}
             </Panel>
