@@ -1,13 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {useQuery} from "@apollo/react-hooks"
 
 import BoundedGraph from "../BoundedGraph"
 import linkMatchesSearchTerm from "../../helpers/linkMatchesSearchTerm";
 import nodeIsDependencyToSearchTerm from "../../helpers/nodeIsDependencyToSearchTerm";
 import nodeMatchesSearchTerm from "../../helpers/nodeMatchesSearchTerm";
-import listProjects from "../../graphql/listProjects.graphql";
-import client from "../../lib/client";
-import projectsToNodesTransformer from "../../transformers/projectsToNodesTransformer";
 
 function getLinksAndNodes(allNodes, allLinks, searchTerm, selectedNode) {
     if (selectedNode === null) {
@@ -24,9 +20,7 @@ function getLinksAndNodes(allNodes, allLinks, searchTerm, selectedNode) {
 }
 
 function ArchitectureGraph(props) {
-    const {data} = useQuery(listProjects, { client });
-    const nodes = data ? projectsToNodesTransformer(data.listProjects) : [];
-    const linksAndNodes = getLinksAndNodes(nodes, [], props.searchTerm, props.selectedNode);
+    const linksAndNodes = getLinksAndNodes(props.nodes, [], props.searchTerm, props.selectedNode);
 
     return (
         <BoundedGraph
