@@ -6,7 +6,7 @@ export default nodes => {
             ...n,
             id: `repository-${n.name}`,
             kind: 'repository',
-            size: n.diskUsage ? n.diskUsage : 100
+            size: n.diskUsage ? n.diskUsage : 1000
         });
     });
 

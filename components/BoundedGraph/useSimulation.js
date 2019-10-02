@@ -35,7 +35,7 @@ import {
     WORKER_TYPE,
 } from "../../constants/types"
 
-const FORCE_STRENGHT = 0.03
+const FORCE_STRENGHT = 0.01
 
 const typeRank = type => {
     if (type === WORKER_TYPE) return 0
@@ -116,7 +116,7 @@ const useSimulation = (
 
         const manyBodyForce = forceManyBody().strength(
            ({size}) =>
-              -Math.pow(repositoryRadiusScale(size), 1.8) * FORCE_STRENGHT * 40
+              -Math.pow(repositoryRadiusScale(size), 1.2) * FORCE_STRENGHT * 40
         );
 
         simulation
