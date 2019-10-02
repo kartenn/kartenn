@@ -46,10 +46,11 @@ class IdentityCard extends React.Component {
                             onChange={this.handleSearch}
                             delay={1000}
                         />
-                        <Icon isSize='small' isAlign='left'>
+                        <span className="icon is-left is-small">
                             <FontAwesomeIcon icon={faSearch} size='xs' style={{margin: '0.5%'}}/>
-                        </Icon>
+                        </span>
                     </Control>
+
                 </PanelBlock>
                 {this.renderIdentity()}
             </Panel>

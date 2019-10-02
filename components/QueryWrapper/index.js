@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useQuery} from "@apollo/react-hooks"
 
-import BoundedGraph from "../BoundedGraph"
 import listProjects from "../../graphql/listProjects.graphql";
 import client from "../../lib/client";
 import projectsToNodesTransformer from "../../transformers/projectsToNodesTransformer";
