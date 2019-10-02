@@ -1,6 +1,8 @@
 import "../../styles/styles.scss"
 
 import Head from "next/head"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 import { Fragment } from "react"
 import {
@@ -28,7 +30,14 @@ class LightLayout extends React.Component {
                <Footer id="footer">
                    <Container>
                        <Content>
-                           <strong>Kartenn</strong> — Ehi repositories! How you doin' today?
+                           <strong>Kartenn</strong>
+                           <a style={{margin: '0 10px'}} href="https://github.com/kartenn" target="_blank">
+                               <FontAwesomeIcon icon={faGithub} />
+                           </a>
+                           <div>
+                               Project made with ❤ during TheFork's innovation week by Carlo Camarda, Romain Delouard,
+                               Vladimir Kosmala, Pierre Rolland, Julien Stanek and Silvano Stralla
+                           </div>
                        </Content>
                    </Container>
                </Footer>
