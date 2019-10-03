@@ -1,0 +1,8 @@
+query getProjectsByNames($projectNames: [String]) {
+    getProjectsByNames(projectNames: $projectNames) {
+        projectUuid
+        name
+        type
+        diskUsage
+    }
+}

@@ -5,7 +5,7 @@ import linkMatchesSearchTerm from "../../helpers/linkMatchesSearchTerm";
 import nodeIsDependencyToSearchTerm from "../../helpers/nodeIsDependencyToSearchTerm";
 import nodeMatchesSearchTerm from "../../helpers/nodeMatchesSearchTerm";
 
-function getLinksAndNodes(allNodes, allLinks, searchTerm, selectedNode) {
+function getLinksAndNodes(allNodes, dependencyNodes, searchTerm, selectedNode) {
     if (selectedNode === null) {
         return {
             links: [],
@@ -13,14 +13,16 @@ function getLinksAndNodes(allNodes, allLinks, searchTerm, selectedNode) {
         };
     }
 
-    const links = allLinks.filter(l => linkMatchesSearchTerm(l, selectedNode.name));
-    const nodes = allNodes.filter(n => n.name === selectedNode.name || nodeIsDependencyToSearchTerm(n, links));
+    console.log(dependencyNodes);
 
-    return { links, nodes };
+//    const links = allLinks.filter(l => linkMatchesSearchTerm(l, selectedNode.name));
+    const nodes = allNodes.filter(n => n.name === selectedNode.name /*|| nodeIsDependencyToSearchTerm(n, links)*/);
+
+    return { links: [], nodes: nodes.concat(dependencyNodes) };
 }
 
 function ArchitectureGraph(props) {
-    const linksAndNodes = getLinksAndNodes(props.nodes, [], props.searchTerm, props.selectedNode);
+    const linksAndNodes = getLinksAndNodes(props.nodes, props.dependencyNodes, props.searchTerm, props.selectedNode);
 
     return (
         <BoundedGraph
