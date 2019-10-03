@@ -3,5 +3,6 @@ query list {
         projectUuid
         name
         type
+        diskUsage
     }
 }

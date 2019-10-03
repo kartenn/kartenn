@@ -33,6 +33,7 @@ import {
     GATEWAY_TYPE,
     API_TYPE,
     WORKER_TYPE,
+    WEBHOOK_TYPE
 } from "../../constants/types"
 
 const FORCE_STRENGHT = 0.01
@@ -42,6 +43,7 @@ const typeRank = type => {
     if (type === SERVICE_TYPE) return 1
     if (type === GATEWAY_TYPE) return 2
     if (type === API_TYPE) return 3
+    if (type === WEBHOOK_TYPE) return 4
 };
 
 const nodeSelected = (node, store) => {
@@ -81,7 +83,7 @@ const useSimulation = (
            .range([5, 20])
 
         const allRanks = map(
-           [SERVICE_TYPE, GATEWAY_TYPE, API_TYPE, WORKER_TYPE],
+           [SERVICE_TYPE, GATEWAY_TYPE, API_TYPE, WORKER_TYPE, WEBHOOK_TYPE],
            typeRank
         ).sort();
 

@@ -2,7 +2,7 @@ import {Panel, PanelHeading, PanelBlock, Icon, Control, Tag} from 'bloomer';
 import DebouncedInput from "../DebouncedInput";
 import {Fragment} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faSitemap } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faSitemap, faCalendar, faCalendarCheck, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faGitlab } from '@fortawesome/free-brands-svg-icons';
 import colors from '../../drawers/colors';
 
@@ -14,6 +14,7 @@ class IdentityCard extends React.Component {
 
     renderIdentity = () => {
         const selectedNode = this.props.selectedNode;
+
         if (selectedNode) {
             return (
                 <Fragment>
@@ -23,6 +24,18 @@ class IdentityCard extends React.Component {
                     </PanelBlock>
                     <PanelBlock>Information</PanelBlock>
                     <PanelBlock>
+                        <div style={{display: 'inline'}}>
+                            <FontAwesomeIcon icon={faCalendar} size='xs' style={{margin: '3%'}}/>
+                            {selectedNode.createdTs}
+                        </div>
+                        <div style={{display: 'inline'}}>
+                            <FontAwesomeIcon icon={faCalendarCheck} size='xs' style={{margin: '3%'}}/>
+                            {selectedNode.updateTs}
+                        </div>
+                        <div style={{display: 'inline'}}>
+                            <FontAwesomeIcon icon={faUser} size='xs' style={{margin: '3%'}}/>
+                            {selectedNode.coderOwner}
+                        </div>
                         <Tag style={{backgroundColor: colors[selectedNode.type], margin : '2%', color:'white'}}>{selectedNode.type}</Tag>
                     </PanelBlock>
                     <PanelBlock>methods</PanelBlock>

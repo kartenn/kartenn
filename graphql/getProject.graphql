@@ -1,5 +1,5 @@
-query get($idRepository: ID) {
-    getProject(idRepository: $idRepository) {
+query get($projectUuid: ID) {
+    getProject(projectUuid: $projectUuid) {
         projectUuid
         name
         urlRepository
@@ -9,5 +9,8 @@ query get($idRepository: ID) {
         slackRoom
         devAlias
         hasReadMe
+        createdTs
+        updatedTs
+        diskUsage
     }
 }

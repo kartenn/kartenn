@@ -6,7 +6,7 @@ import colors from './colors';
 function drawRepositoryNode(selection, { scale, showLabel = false }) {
   selection
     .append("path")
-    .attr("d", ({ diskUsage = 100 }) => getPolygonPath(scale(diskUsage), 6))
+    .attr("d", ({ diskUsage }) => getPolygonPath(scale(diskUsage), 6))
     .attr("stroke", "#589442")
     .attr("stroke-opacity", 0.3)
     .attr("stroke-width", 3)
