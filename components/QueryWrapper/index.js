@@ -12,7 +12,8 @@ function QueryWrapper(props) {
     let nodes = [];
 
     if (props.selectedNode !== null) {
-        return <Query query={getProject} client={client}>
+        console.log(props.selectedNode.projectUuid);
+        return <Query query={getProject} variables={{projectUuid: props.selectedNode.projectUuid}} client={client}>
             {({ loading, error, data }) => {
                 if (loading) return "Loading...";
                 if (error) return `Error! ${error.message}`;
