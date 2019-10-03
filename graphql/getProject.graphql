@@ -13,5 +13,24 @@ query get($projectUuid: ID) {
         updatedTs
         diskUsage
         type
+        methods {
+            name
+            response
+            params {
+                name
+                description
+                type
+                required
+            }
+        }
+        events {
+            name
+            params {
+                name
+                description
+                type
+                required
+            }
+        }
     }
 }

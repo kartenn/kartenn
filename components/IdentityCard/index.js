@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faSitemap, faCalendar, faCalendarCheck, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faGitlab } from '@fortawesome/free-brands-svg-icons';
 import colors from '../../drawers/colors';
+import Menu from '../Menu'
 
 class IdentityCard extends React.Component {
 
@@ -36,8 +37,8 @@ class IdentityCard extends React.Component {
                             <br/><small>Code owners : {contentNodes.codeOwners}</small>
                         </Message>
                     </PanelBlock>
-                    <PanelBlock>methods</PanelBlock>
-                    <PanelBlock>events</PanelBlock>
+                    {contentNodes.methods ? <Menu tree={contentNodes.methods} title='Methods'/> : null }
+                    {contentNodes.events ? <Menu tree={contentNodes.events} title='Events'/> : null }
                 </Fragment>
             )
         }
