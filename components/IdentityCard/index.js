@@ -34,7 +34,7 @@ class IdentityCard extends React.Component {
                             <Tag style={{backgroundColor: colors[contentNodes.type], margin : '2%', color:'white'}}>{contentNodes.type}</Tag>
                             <br/><small>Created at : {this.formatDate(contentNodes.createdTs)}</small>
                             <br/><small>Last update : {this.formatDate(contentNodes.updatedTs)}</small>
-                            <br/><small>Code owners : {contentNodes.codeOwners}</small>
+                            <br/><small>{contentNodes.codeOwners}</small>
                         </Message>
                     </PanelBlock>
                     {contentNodes.methods ? <Menu tree={contentNodes.methods} title='Methods'/> : null }
