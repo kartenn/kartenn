@@ -118,7 +118,7 @@ const useSimulation = (
 
         const manyBodyForce = forceManyBody().strength(
            ({size}) =>
-              -Math.pow(repositoryRadiusScale(size), 1.2) * FORCE_STRENGHT * 40
+              -Math.pow(repositoryRadiusScale(size), 1.8) * FORCE_STRENGHT * 40
         );
 
         simulation
