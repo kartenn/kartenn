@@ -25,8 +25,7 @@ function ArchitectureGraph(props) {
         <BoundedGraph
            style={{width: "100%", height: "150vh"}}
            store={props.store}
-           nodes={linksAndNodes.nodes}
-           links={linksAndNodes.links}
+           {...linksAndNodes}
         />
     );
 }
