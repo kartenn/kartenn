@@ -10,6 +10,7 @@ const GraphAndCardWrapper = (props) => {
                   selectedNode={props.selectedNode}
                   nodes={props.nodes}
                   searchTerm={props.searchTerm}
+                  loading={props.loading}
                />
            </div>
            <div style={{width: '100%'}}>

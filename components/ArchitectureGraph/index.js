@@ -4,7 +4,7 @@ import BoundedGraph from "../BoundedGraph"
 import nodeMatchesSearchTerm from "../../helpers/nodeMatchesSearchTerm";
 import dependenciesToLinksTransformer from "../../transformers/dependenciesToLinksTransformer";
 
-function getLinksAndNodes(allNodes, dependencyNodes, searchTerm, selectedNode) {
+function getLinksAndNodes(allNodes, dependencyNodes, searchTerm, selectedNode, loading) {
     if (selectedNode === null) {
         return {
             links: [],
@@ -13,18 +13,18 @@ function getLinksAndNodes(allNodes, dependencyNodes, searchTerm, selectedNode) {
     }
 
     return {
-        links: dependenciesToLinksTransformer(allNodes[0]),
+        links: loading ? [] : dependenciesToLinksTransformer(allNodes[0]),
         nodes: allNodes.concat(dependencyNodes)
     };
 }
 
-function ArchitectureGraph(props) {
-    const linksAndNodes = getLinksAndNodes(props.nodes, props.dependencyNodes, props.searchTerm, props.selectedNode);
+function ArchitectureGraph({nodes, dependencyNodes, searchTerm, selectedNode, loading, store}) {
+    const linksAndNodes = getLinksAndNodes(nodes, dependencyNodes, searchTerm, selectedNode, loading);
 
     return (
         <BoundedGraph
            style={{width: "100%", height: "150vh"}}
-           store={props.store}
+           store={store}
            {...linksAndNodes}
         />
     );

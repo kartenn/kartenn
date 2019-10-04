@@ -15,8 +15,17 @@ function QueryWrapper(props) {
     if (props.selectedNode !== null) {
         return <Query query={getProject} variables={{projectUuid: props.selectedNode.projectUuid}} client={client}>
             {({ loading, error, data }) => {
-                if (loading) return "Loading...";
+                if (loading) {
+                    return <GraphAndCardWrapper
+                       {...props}
+                       nodes={[]}
+                       dependencyNodes={[]}
+                       loading={true}
+                    />;
+                }
+
                 if (error) return `Error! ${error.message}`;
+
                 nodes = data ? projectToNodeTransformer(data.getProject) : [];
 
                 let dependencies = [];
@@ -30,8 +39,17 @@ function QueryWrapper(props) {
                 return (
                     <Query query={getProjectsByNames} variables={{projectNames: dependencies}} client={client}>
                         {projects => {
-                            if (projects.loading) return "Loading...";
+                            if (projects.loading) {
+                                return <GraphAndCardWrapper
+                                   {...props}
+                                   nodes={[]}
+                                   dependencyNodes={[]}
+                                   loading={true}
+                                />;
+                            }
+
                             if (projects.errors) return `Error! ${error.message}`;
+
                             const dependencyNodes = projects.data ?
                                projectsToNodesTransformer(projects.data.getProjectsByNames) : [];
 
@@ -39,6 +57,7 @@ function QueryWrapper(props) {
                                {...props}
                                nodes={nodes}
                                dependencyNodes={dependencyNodes}
+                               loading={false}
                             />
                         }}
                     </Query>
@@ -49,7 +68,14 @@ function QueryWrapper(props) {
 
     return <Query query={listProjects} client={client}>
         {({ loading, error, data }) => {
-            if (loading) return "Loading...";
+            if (loading) {
+                return <GraphAndCardWrapper
+                   {...props}
+                   nodes={[]}
+                   dependencyNodes={[]}
+                />;
+            }
+
             if (error) return `Error! ${error.message}`;
             nodes = data ? projectsToNodesTransformer(data.listProjects) : [];
 
