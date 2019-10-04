@@ -43,7 +43,7 @@ class IdentityCard extends React.Component {
                                 <FontAwesomeIcon icon={faUndo} size='sm' />
                             </div>
                         </a>
-                        <Message style={{backgroundColor: 'white'}}>
+                        <Message style={{backgroundColor: 'white', width: '100%'}}>
                             <span>
                                 <FontAwesomeIcon icon={faGithub} size='xs' style={{margin: '0 3%', width: '20px', height: '20px'}}/>
                                 <a href={contentNodes.urlRepository} target='_blank'>{contentNodes.name}</a>
