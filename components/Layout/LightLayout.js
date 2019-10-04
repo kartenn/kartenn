@@ -31,7 +31,10 @@ class LightLayout extends React.Component {
                    <Container>
                        <Content>
                            <strong>Kartenn</strong>
-                           <a style={{margin: '0 10px'}} href="https://github.com/kartenn" target="_blank">
+                           <a
+                              style={{marginLeft: '5px', display: 'inline-block', width: '16px', height: '16px'}}
+                              href="https://github.com/kartenn" target="_blank"
+                           >
                                <FontAwesomeIcon icon={faGithub} />
                            </a>
                            <div>
