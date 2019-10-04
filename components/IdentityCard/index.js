@@ -38,7 +38,7 @@ class IdentityCard extends React.Component {
                         </a>
                         <Message style={{backgroundColor: 'white'}}>
                             <span>
-                                <FontAwesomeIcon icon={faGithub} size='xs' style={{margin: '0 3%'}}/>
+                                <FontAwesomeIcon icon={faGithub} size='xs' style={{margin: '0 3%', width: '20px', height: '20px'}}/>
                                 <a href={contentNodes.url} target='_blank'>{contentNodes.name}</a>
                             </span>
                             <Tag
