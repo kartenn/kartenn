@@ -95,7 +95,9 @@ class IdentityCard extends React.Component {
         return (
             <Panel>
                 <PanelHeading style={{backgroundColor: '#77B5FE', color: 'white'}}>
-                    <FontAwesomeIcon icon={faSitemap} size='sm' style={{margin: '0 3%'}}/>
+                    <span style={{display: 'inline-block', width: '24px', height: '24px'}}>
+                        <FontAwesomeIcon icon={faSitemap} />
+                    </span>
                     <span style={{padding: '3%'}}>Kartenn</span>
                 </PanelHeading>
                 {this.props.selectedNode === null ? (
