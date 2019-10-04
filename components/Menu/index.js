@@ -7,13 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class Menu extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {isToggleOn: false};
+        this.state = {
+            isToggleOn: false,
+            search: ''
+        };
     }
 
     handleClick = () => {
         this.setState({
-            isToggleOn: !this.state.isToggleOn,
-            search: ''
+            isToggleOn: !this.state.isToggleOn
         });
     };
 
@@ -38,9 +40,12 @@ class Menu extends React.Component {
                            isSize="small"
                         />
                         <ul style={{width: '100%'}}>
-                            {this.props.tree.filter(i => i.name.indexOf(this.state.search) !== -1).map(function(item, index){
-                                return <SubMenu {...item} key={index}/>
-                            })}
+                            {this
+                               .props
+                               .tree
+                               .filter(i => i.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1)
+                               .map((item, index) => <SubMenu {...item} key={index}/>)
+                            }
                         </ul>
                     </PanelBlock>
                 ) : <Fragment/>}
