@@ -7,6 +7,6 @@ const simulation = forceSimulation()
 
 // From: https://github.com/d3/d3-force/blob/master/README.md#simulation_velocityDecay
 // Default value is 0.4: higher decays slower the simulation in a quicker way.
-simulation.velocityDecay(0.3)
+simulation.velocityDecay(0.1)
 
 export default simulation
