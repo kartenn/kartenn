@@ -2,8 +2,8 @@ import {Panel, PanelHeading, PanelBlock, Message, Control, Tag} from 'bloomer';
 import DebouncedInput from "../DebouncedInput";
 import {Fragment} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faSitemap, faCalendar, faCalendarCheck, faUser } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faGitlab } from '@fortawesome/free-brands-svg-icons';
+import { faSearch, faSitemap } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import colors from '../../drawers/colors';
 import Menu from '../Menu'
 
@@ -34,7 +34,10 @@ class IdentityCard extends React.Component {
                             <Tag style={{backgroundColor: colors[contentNodes.type], margin : '2%', color:'white'}}>{contentNodes.type}</Tag>
                             <br/><small>Created at : {this.formatDate(contentNodes.createdTs)}</small>
                             <br/><small>Last update : {this.formatDate(contentNodes.updatedTs)}</small>
-                            <br/><small>{contentNodes.codeOwners}</small>
+                            <br/>
+                            {contentNodes.codeOwners.map(c => {
+                                return <Tag isColor='light' style={{ margin : '2%'}}>{c}</Tag>
+                            })}
                         </Message>
                     </PanelBlock>
                     {contentNodes.methods ? <Menu tree={contentNodes.methods} title='Methods'/> : null }
