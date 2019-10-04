@@ -57,6 +57,7 @@ class IdentityCard extends React.Component {
                             placeholder='Find a micro-service'
                             onChange={this.handleSearch}
                             delay={1000}
+                            value={this.props.searchTerm}
                         />
                         <span className="icon is-left">
                             <FontAwesomeIcon icon={faSearch} size='xs' style={{margin: '0.5%'}}/>

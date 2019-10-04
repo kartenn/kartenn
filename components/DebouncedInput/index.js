@@ -6,7 +6,8 @@ class DebouncedInput extends Component {
         super(props);
 
         this.state = {
-            timeoutId: null
+            timeoutId: null,
+            value: this.props.value ? this.props.value : ''
         };
     }
 
@@ -19,13 +20,14 @@ class DebouncedInput extends Component {
 
         const timeoutId = setTimeout(() => { this.props.onChange(value); }, this.props.delay);
 
-        this.setState({ timeoutId })
+        this.setState({ timeoutId, value })
     };
 
     render() {
         return <Input
             placeholder={this.props.placeholder}
             onChange={this.handleChange}
+            value={this.state.value}
         />
     }
 }
