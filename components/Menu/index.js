@@ -1,4 +1,4 @@
-import {PanelHeading, PanelBlock} from 'bloomer';
+import {Input, PanelBlock} from 'bloomer';
 import {Fragment} from "react";
 import SubMenu from "../SubMenu";
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
@@ -12,8 +12,15 @@ class Menu extends React.Component {
 
     handleClick = () => {
         this.setState({
-            isToggleOn: !this.state.isToggleOn
+            isToggleOn: !this.state.isToggleOn,
+            search: ''
         });
+    };
+
+    handleSearchChange = e => {
+        this.setState({
+            search: e.target.value
+        })
     };
 
     render() {
@@ -24,9 +31,14 @@ class Menu extends React.Component {
                     {this.props.title}
                 </PanelBlock>
                 {this.state.isToggleOn ? (
-                    <PanelBlock style={{backgroundColor: 'white', padding: '0'}}>
+                    <PanelBlock style={{flexDirection: 'column', backgroundColor: 'white', padding: '0'}}>
+                        <Input
+                           placeholder="Search..."
+                           onChange={this.handleSearchChange}
+                           isSize="small"
+                        />
                         <ul style={{width: '100%'}}>
-                            {this.props.tree.map(function(item, index){
+                            {this.props.tree.filter(i => i.name.indexOf(this.state.search) !== -1).map(function(item, index){
                                 return <SubMenu {...item} index={index}/>
                             })}
                         </ul>
