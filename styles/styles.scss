@@ -79,11 +79,22 @@ $DEFAULT_PADDING: 0.75rem;
   width: 100%;
 }
 
-.methods {
-  padding: 5px;
+.method {
   width: 100%;
 }
 
-li.methods:not(:last-child) {
+li.method:not(:last-child) .method-head {
   border-bottom: 1px solid #e1e1e1;
+  padding: 5px;
+}
+
+li.param:not(:last-child) {
+  border-bottom: 1px solid #e1e1e1;
+}
+
+h3 {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+  background: #ced6e0;
 }
