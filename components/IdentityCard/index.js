@@ -106,7 +106,7 @@ class IdentityCard extends React.Component {
                            <DebouncedInput
                               placeholder='Find a micro-service'
                               onChange={this.handleSearch}
-                              delay={1000}
+                              delay={200}
                               value={this.props.searchTerm}
                            />
                             <span className="icon is-left">
