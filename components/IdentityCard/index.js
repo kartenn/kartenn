@@ -2,7 +2,7 @@ import {Panel, PanelHeading, PanelBlock, Message, Control, Tag} from 'bloomer';
 import DebouncedInput from "../DebouncedInput";
 import {Fragment} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faSitemap } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faSitemap, faUndo } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import colors from '../../drawers/colors';
 import Menu from '../Menu'
@@ -11,10 +11,17 @@ class IdentityCard extends React.Component {
 
     formatDate = (date) => {
         return new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(date)
-    }
+    };
 
     handleSearch = (value) => {
         this.props.store.dispatch({type: 'SEARCH', payload: value});
+    };
+
+    handleClick = () => {
+        this.props.store.dispatch({
+            type: 'SELECT_NODE',
+            payload: null
+        })
     };
 
     renderIdentity = () => {
@@ -25,7 +32,10 @@ class IdentityCard extends React.Component {
 
             return (
                 <Fragment>
-                    <PanelBlock style={{backgroundColor: 'white'}}>
+                    <PanelBlock style={{backgroundColor: 'white', position: 'relative'}}>
+                        <a onClick={this.handleClick}>
+                            <div style={{position: 'absolute', top: '5px', right: '5px'}}><FontAwesomeIcon icon={faUndo} size='s' /></div>
+                        </a>
                         <Message style={{backgroundColor: 'white'}}>
                             <span>
                                 <FontAwesomeIcon icon={faGithub} size='xs' style={{margin: '0 3%'}}/>
