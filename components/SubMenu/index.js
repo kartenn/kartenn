@@ -33,7 +33,7 @@ class SubMenu extends React.Component {
     render() {
         return (
             <Fragment>
-                <li style={{margin: '3px'}} key={ this.props.index }>
+                <li style={{margin: '3px', width: '100%'}} key={ this.props.index }>
                     <p style={{cursor: 'pointer', fontSize: '12px'}} onClick={this.handleClick}>
                         {this.formatMethod(this.props.name)}
                     </p>

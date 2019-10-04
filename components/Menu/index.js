@@ -19,12 +19,12 @@ class Menu extends React.Component {
     render() {
         return (
             <Fragment>
-                <PanelHeading style={{backgroundColor: '#77B5FE', color: 'white', cursor: 'pointer'}} onClick={this.handleClick}>
+                <PanelBlock style={{backgroundColor: '#77B5FE', color: 'white', cursor: 'pointer'}} onClick={this.handleClick}>
                     <FontAwesomeIcon icon={this.state.isToggleOn ? faMinus : faPlus} size='xs' style={{margin: '0 3%'}} />
                     {this.props.title}
-                </PanelHeading>
+                </PanelBlock>
                 {this.state.isToggleOn ? (
-                    <PanelBlock>
+                    <PanelBlock style={{backgroundColor: 'white'}}>
                         <ul>
                             {this.props.tree.map(function(item, index){
                                 return <SubMenu {...item} index={index}/>
