@@ -69,8 +69,8 @@ class IdentityCard extends React.Component {
                                       key={i}
                                       style={{
                                           margin:'2%',
-                                          color: languagesColors[l].front,
-                                          backgroundColor:languagesColors[l].back
+                                          color: languagesColors[l] ? languagesColors[l].front : '#FFFFFF',
+                                          backgroundColor: languagesColors[l] ? languagesColors[l].back : '#000000'
                                       }}
                                    >
                                        {l}

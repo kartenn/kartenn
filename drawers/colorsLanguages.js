@@ -26,5 +26,21 @@ export default {
     Go: {
         front: '#FFFFFF',
         back: '#00ADD8'
+    },
+    Makefile: {
+        front: '#FFFFFF',
+        back: '#427819'
+    },
+    Shell: {
+        front: '#000000',
+        back: '#89E051'
+    },
+    CSS: {
+        front: '#FFFFFF',
+        back: '#563D7C'
+    },
+    XSLT: {
+        front: '#000000',
+        back: '#EB8CEB'
     }
 };
