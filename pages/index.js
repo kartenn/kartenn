@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import QueryWrapper from "../../components/QueryWrapper";
+import QueryWrapper from "../components/QueryWrapper";
 
-class Inno extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
 
@@ -33,4 +33,4 @@ class Inno extends Component {
 
 }
 
-export default Inno;
+export default Index;
