@@ -1,8 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
 import BoundedGraph from "../BoundedGraph"
-import linkMatchesSearchTerm from "../../helpers/linkMatchesSearchTerm";
-import nodeIsDependencyToSearchTerm from "../../helpers/nodeIsDependencyToSearchTerm";
 import nodeMatchesSearchTerm from "../../helpers/nodeMatchesSearchTerm";
 import dependenciesToLinksTransformer from "../../transformers/dependenciesToLinksTransformer";
 
@@ -27,8 +25,7 @@ function ArchitectureGraph(props) {
         <BoundedGraph
            style={{width: "100%", height: "150vh"}}
            store={props.store}
-           nodes={linksAndNodes.nodes}
-           links={linksAndNodes.links}
+           {...linksAndNodes}
         />
     );
 }
