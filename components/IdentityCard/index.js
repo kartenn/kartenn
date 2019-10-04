@@ -54,20 +54,21 @@ class IdentityCard extends React.Component {
                     <FontAwesomeIcon icon={faSitemap} size='sm' style={{margin: '0 3%'}}/>
                     <span style={{padding: '3%'}}>Kartenn</span>
                 </PanelHeading>
-                <PanelBlock>
-                    <Control hasIcons='left'>
-                        <DebouncedInput
-                            placeholder='Find a micro-service'
-                            onChange={this.handleSearch}
-                            delay={1000}
-                            value={this.props.searchTerm}
-                        />
-                        <span className="icon is-left">
-                            <FontAwesomeIcon icon={faSearch} size='xs' style={{margin: '0.5%'}}/>
-                        </span>
-                    </Control>
-
-                </PanelBlock>
+                {this.props.selectedNode === null ? (
+                    <PanelBlock>
+                        <Control hasIcons='left'>
+                           <DebouncedInput
+                              placeholder='Find a micro-service'
+                              onChange={this.handleSearch}
+                              delay={1000}
+                              value={this.props.searchTerm}
+                           />
+                            <span className="icon is-left">
+                                <FontAwesomeIcon icon={faSearch} size='xs' style={{margin: '0.5%'}}/>
+                            </span>
+                        </Control>
+                    </PanelBlock>
+                ) : null}
                 {this.renderIdentity()}
             </Panel>
         )
