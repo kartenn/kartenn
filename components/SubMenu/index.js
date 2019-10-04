@@ -33,13 +33,13 @@ class SubMenu extends React.Component {
     render() {
         return (
             <Fragment>
-                <li style={{margin: '3px', width: '100%'}} key={ this.props.index }>
+                <li className='methods' key={ this.props.index }>
                     <p style={{cursor: 'pointer', fontSize: '12px'}} onClick={this.handleClick}>
                         {this.formatMethod(this.props.name)}
                     </p>
                     {/*{this.props.response ? <pre>{this.props.response.description}</pre> : null }*/}
                     {this.state.isToggleOn && this.props.params ? (
-                        <ul>
+                        <ul style={{border: '1px dashed black', width: '100%', backgroundColor: '#f1f2f6', margin: '5px'}}>
                             {this.props.params.map(function({name, description, type, required}, index){
                                 return (
                                     <li style={{listStyle: 'inside', marginLeft: '10%', fontSize: '12px'}} key={ 'n' + index }>

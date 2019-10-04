@@ -78,3 +78,12 @@ $DEFAULT_PADDING: 0.75rem;
   border-top: none;
   width: 100%;
 }
+
+.methods {
+  padding: 5px;
+  width: 100%;
+}
+
+li.methods:not(:last-child) {
+  border-bottom: 1px solid #e1e1e1;
+}

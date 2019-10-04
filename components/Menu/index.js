@@ -24,8 +24,8 @@ class Menu extends React.Component {
                     {this.props.title}
                 </PanelBlock>
                 {this.state.isToggleOn ? (
-                    <PanelBlock style={{backgroundColor: 'white'}}>
-                        <ul>
+                    <PanelBlock style={{backgroundColor: 'white', padding: '0'}}>
+                        <ul style={{width: '100%'}}>
                             {this.props.tree.map(function(item, index){
                                 return <SubMenu {...item} index={index}/>
                             })}
