@@ -14,17 +14,25 @@ class SubMenu extends React.Component {
         });
     };
 
-    formatMethod(method) {
-        const splitMethod = method.split(" ");
-        if (ColorsMethods[splitMethod[0]]) {
+    formatMethod(type, name) {
+        if (ColorsMethods[type]) {
             return (
                 <Fragment>
-                    <Tag style={{backgroundColor: ColorsMethods[splitMethod[0]], marginRight: '3%', color: 'white', width: '50px', fontSize: '10px'}}>{ splitMethod[0] }</Tag>
-                    <span>{ splitMethod[1] }</span>
+                    <Tag style={{
+                        backgroundColor: ColorsMethods[type],
+                        marginRight: '3%',
+                        color: 'white',
+                        width: '50px',
+                        fontSize: '9px',
+                        fontWeight: 'bold'
+                    }}>
+                        {type}
+                    </Tag>
+                    <span>{ name }</span>
                 </Fragment>
             )
         } else {
-            return <span>{ splitMethod[0] }</span>
+            return <span>{ name }</span>
         }
     }
 
@@ -33,7 +41,7 @@ class SubMenu extends React.Component {
             <Fragment>
                 <li className='methods' key={ this.props.index }>
                     <p style={{cursor: 'pointer', fontSize: '12px'}} onClick={this.handleClick}>
-                        {this.formatMethod(this.props.name)}
+                        {this.formatMethod(this.props.type, this.props.name)}
                     </p>
                     {/*{this.props.response ? <pre>{this.props.response.description}</pre> : null }*/}
                     {this.state.isToggleOn && this.props.params ? (

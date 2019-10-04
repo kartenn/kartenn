@@ -15,6 +15,7 @@ query get($projectUuid: ID) {
         type
         methods {
             name
+            type
             response
             params {
                 name

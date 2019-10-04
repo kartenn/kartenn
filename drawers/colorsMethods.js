@@ -3,5 +3,6 @@ export default {
     ['PUT']: '#c5862b',
     ['PATCH']: '#D38042',
     ['POST']: '#10a54a',
-    ['DELETE']: '#a41e22'
+    ['DELETE']: '#a41e22',
+    ['JSON-RPC']: '#ff6b81',
 };
