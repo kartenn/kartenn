@@ -1,8 +1,6 @@
 import {Fragment} from "react";
 import {Tag} from 'bloomer';
 import ColorsMethods from '../../drawers/colorsMethods'
-import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 class SubMenu extends React.Component {
     constructor(props) {

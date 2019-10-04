@@ -39,7 +39,7 @@ class Menu extends React.Component {
                         />
                         <ul style={{width: '100%'}}>
                             {this.props.tree.filter(i => i.name.indexOf(this.state.search) !== -1).map(function(item, index){
-                                return <SubMenu {...item} index={index}/>
+                                return <SubMenu {...item} key={index}/>
                             })}
                         </ul>
                     </PanelBlock>

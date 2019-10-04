@@ -34,7 +34,9 @@ class IdentityCard extends React.Component {
                 <Fragment>
                     <PanelBlock style={{backgroundColor: 'white', position: 'relative'}}>
                         <a onClick={this.handleClick}>
-                            <div style={{position: 'absolute', top: '5px', right: '5px'}}><FontAwesomeIcon icon={faUndo} size='s' /></div>
+                            <div style={{position: 'absolute', top: '5px', right: '5px'}}>
+                                <FontAwesomeIcon icon={faUndo} size='sm' />
+                            </div>
                         </a>
                         <Message style={{backgroundColor: 'white'}}>
                             <span>
@@ -57,8 +59,8 @@ class IdentityCard extends React.Component {
                                 Last update : {this.formatDate(contentNodes.updatedTs)}
                             </div>
                             <div>
-                                {contentNodes.codeOwners.map(c => {
-                                    return <Tag isColor='light' style={{ margin : '2%'}}>{c}</Tag>
+                                {contentNodes.codeOwners.map((c, i) => {
+                                    return <Tag key={i} isColor='light' style={{ margin : '2%'}}>{c}</Tag>
                                 })}
                             </div>
                         </Message>
