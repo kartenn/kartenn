@@ -1,7 +1,7 @@
 export default {
-    ['GET']: '#fa983a',
-    ['PUT']: '#6a89cc',
-    ['PATCH']: '#e55039',
-    ['POST']: '#78e08f',
-    ['DELETE']: '#000000'
+    ['GET']: '#0f6ab4',
+    ['PUT']: '#c5862b',
+    ['PATCH']: '#D38042',
+    ['POST']: '#10a54a',
+    ['DELETE']: '#a41e22'
 };
