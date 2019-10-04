@@ -4,5 +4,5 @@ export default {
     ['PATCH']: '#D38042',
     ['POST']: '#10a54a',
     ['DELETE']: '#a41e22',
-    ['JSON-RPC']: '#ff6b81',
+    ['JSON-RPC']: '#747d8c',
 };
