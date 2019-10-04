@@ -63,7 +63,7 @@ class IdentityCard extends React.Component {
                             <div style={{fontSize: '0.8rem'}}>
                                 Last update : {this.formatDate(contentNodes.updatedTs)}
                             </div>
-                            <div>
+                            <div style={{width: '100%'}}>
                                 {contentNodes.languages.map((l, i) => (
                                    <Tag
                                       key={i}
