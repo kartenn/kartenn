@@ -11,7 +11,7 @@ class IdentityCard extends React.Component {
 
     formatDate = (date) => {
         return new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(date)
-    }
+    };
 
     handleSearch = (value) => {
         this.props.store.dispatch({type: 'SEARCH', payload: value});
@@ -31,13 +31,26 @@ class IdentityCard extends React.Component {
                                 <FontAwesomeIcon icon={faGithub} size='xs' style={{margin: '0 3%'}}/>
                                 <a href={contentNodes.url} target='_blank'>{contentNodes.name}</a>
                             </span>
-                            <Tag style={{backgroundColor: colors[contentNodes.type], margin : '2%', color:'white'}}>{contentNodes.type}</Tag>
-                            <br/><small>Created at : {this.formatDate(contentNodes.createdTs)}</small>
-                            <br/><small>Last update : {this.formatDate(contentNodes.updatedTs)}</small>
-                            <br/>
-                            {contentNodes.codeOwners.map(c => {
-                                return <Tag isColor='light' style={{ margin : '2%'}}>{c}</Tag>
-                            })}
+                            <Tag
+                               style={{
+                                   backgroundColor: colors[contentNodes.type],
+                                   margin : '2%',
+                                   color:'white'
+                               }}
+                            >
+                                {contentNodes.type}
+                            </Tag>
+                            <div style={{fontSize: '0.8rem'}}>
+                                Created at : {this.formatDate(contentNodes.createdTs)}
+                            </div>
+                            <div style={{fontSize: '0.8rem'}}>
+                                Last update : {this.formatDate(contentNodes.updatedTs)}
+                            </div>
+                            <div>
+                                {contentNodes.codeOwners.map(c => {
+                                    return <Tag isColor='light' style={{ margin : '2%'}}>{c}</Tag>
+                                })}
+                            </div>
                         </Message>
                     </PanelBlock>
                     {contentNodes.methods ? <Menu tree={contentNodes.methods} title='Methods'/> : null }
@@ -45,7 +58,7 @@ class IdentityCard extends React.Component {
                 </Fragment>
             )
         }
-    }
+    };
 
     render() {
         return (
