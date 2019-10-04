@@ -2,6 +2,7 @@ import {Fragment} from "react";
 import {Tag} from 'bloomer';
 import ColorsMethods from '../../drawers/colorsMethods'
 import Params from "../Params";
+import Response from "../Response";
 
 class SubMenu extends React.Component {
     constructor(props) {
@@ -44,7 +45,12 @@ class SubMenu extends React.Component {
                     <div className="method-head" style={{cursor: 'pointer', fontSize: '12px'}} onClick={this.handleClick}>
                         {this.formatMethod(this.props.type, this.props.name)}
                     </div>
-                    {this.state.isToggleOn && this.props.params ? <Params params={this.props.params} /> : <Fragment/>}
+                    {this.state.isToggleOn && this.props.params ? (
+                       <Fragment>
+                           <Params params={this.props.params} />
+                           {/*<Response response={this.props.response} />*/}
+                       </Fragment>
+                    ) : <Fragment/>}
                 </li>
             </Fragment>
         )
