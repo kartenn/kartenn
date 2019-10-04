@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faSitemap, faUndo } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import colors from '../../drawers/colors';
+import languagesColors from '../../drawers/colorsLanguages';
 import Menu from '../Menu'
 
 class IdentityCard extends React.Component {
@@ -61,6 +62,20 @@ class IdentityCard extends React.Component {
                             </div>
                             <div style={{fontSize: '0.8rem'}}>
                                 Last update : {this.formatDate(contentNodes.updatedTs)}
+                            </div>
+                            <div>
+                                {contentNodes.languages.map((l, i) => (
+                                   <Tag
+                                      key={i}
+                                      style={{
+                                          margin:'2%',
+                                          color: languagesColors[l].front,
+                                          backgroundColor:languagesColors[l].back
+                                      }}
+                                   >
+                                       {l}
+                                   </Tag>
+                                ))}
                             </div>
                             <div>
                                 {contentNodes.codeOwners.map((c, i) => {
