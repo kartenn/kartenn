@@ -5,4 +5,5 @@ export default {
     ['POST']: '#10a54a',
     ['DELETE']: '#a41e22',
     ['JSON-RPC']: '#747d8c',
+    ['GRAPHQL']: '#E10098'
 };
